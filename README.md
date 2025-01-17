@@ -10,14 +10,14 @@ Another potential add on will be to add levels but I think this is beyond my sco
 
 ## HTML
 
--   [ ] Container to display the paragraph of text
--   [ ] A set of buttons/counters for game controls/scores
-    -   [ ] Time counter
-    -   [ ] mistakes counter
+-   [x] Container to display the paragraph of text
+-   [x] A set of buttons/counters for game controls/scores
+    -   [x] Time counter
+    -   [x] mistakes counter
     -   [ ] words per minute score (this will display at the end)
     -   [ ] characters per minute score (this will display at the end)
-    -   [ ] Start or Restart button (could change from start to restart once the timer has started??? Or maybe just have separate buttons)
--   [ ] An input box to type into
+    -   [x] Start or Restart button (could change from start to restart once the timer has started??? Or maybe just have separate buttons)
+-   [x] An input box to type into
 
 ## SCSS
 
