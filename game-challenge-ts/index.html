@@ -7,22 +7,21 @@
     <title>Rapid Type</title>
   </head>
   <body>
-    <div class = "gameContainer">
-      <div class = "paragraphtText">
+    <div class = "game">
+      <h1>R a p i d - T y p e</h1>
+      <div class = "game__paragraphContainer">
         <p>Paragraph will go here</p>
       </div>
-      <div class = "gameControls">
-        <button>Time Remaining:</button>
-        <button>Mistakes:</button>
-        <button>Start</button>
-        <button>Restart</button>
+      <div class = "game__controls">
+        <button id = "timer" class = "game__controls__button">Time Remaining:</button>
+        <button id = "mistakes" class = "game__controls__button">Mistakes:</button>
+        <button id = "start" class = "game__controls__button">Start</button>
+        <button id = "restart" class = "game__controls__button">Restart</button>
       </div>
       <div class = "input">
         <input class = "input__display" type = "text" placeholder = "Click here to start typing" />
       </div>
-
     </div>
-
 
 
     <script type="module" src="/src/main.ts"></script>
