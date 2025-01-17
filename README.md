@@ -21,10 +21,10 @@ Another potential add on will be to add levels but I think this is beyond my sco
 
 ## SCSS
 
--   [ ] The paragraph of text will display in its own box
--   [ ] Below that there will be the buttons/counters
+-   [x] The paragraph of text will display in its own box
+-   [x] Below that there will be the buttons/counters
 -   [ ] Appropriate styling applied
-    -   [ ] Background design etc.
+    -   [x] Background design etc.
 
 ## Typescript Logic
 
