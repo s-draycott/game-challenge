@@ -1,9 +1,11 @@
 import '../stylesheet.scss';
 const timer = document.querySelector("#timer");
 const paragraphText = document.querySelector("#paragraph-text");
-const scoreDisplay = document.querySelector("#score-pop-up");
+const scoreDisplay = document.querySelector<HTMLDivElement>("#score-pop-up");
 const inputText = document.querySelector(".game__input");
-const reset = document.querySelector(".reset");
+const reset = document.querySelector<HTMLButtonElement>("#reset");
+const playAgain = document.querySelector<HTMLButtonElement>(".playAgain");
+const start = document.querySelector<HTMLButtonElement>("#start");
 
 const paragraphs = [
     "A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.",
@@ -12,7 +14,7 @@ const paragraphs = [
     "What they do not comprehend is man’s helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great."
 ]
 
-if(!timer || !paragraphText || !scoreDisplay) {
+if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start) {
     throw new Error("Some elements can not be found")
 }
 
@@ -24,28 +26,46 @@ const loadPara = () => {
 }
 loadPara();
 
-// Timer will be set to 60 and score will display after
-let timerLength = 1;
-const timerFunc = () => {
+
+
+
+//start button
+let timerLength = 5;
+timer.innerHTML = " " + timerLength;
+
+const startTimer = () => {
     if (timerLength > 0) {
         timerLength--;
         timer.innerHTML = " " + timerLength;
+        setInterval(startTimer ,1000);
     } else scoreDisplay.style.display = "block";
-}; setInterval(timerFunc, 1000);
-
-
-
-
-
-
-
+}; 
 
 
 
 const resetFunc = () => {
     loadPara();
-    clearInterval(timerLength);
+    scoreDisplay.style.display = "none";
+    let timerLength = 60;
+    const startTimer = () => {
+    if (timerLength === 0) {
+        timerLength--;
+        timer.innerHTML = " " + timerLength;
+        setInterval(startTimer ,1000);
+    } 
+}};
 
+//play again
+const playAgainFunc = () =>{
+    loadPara();
+    scoreDisplay.style.display = "none";
+    if (timerLength === 0) {
+        let timerLength = 60;
+        timerLength--;
+        timer.innerHTML = " " + timerLength;
+    } setInterval(playAgainFunc ,1000);
 }
 
-reset.addEventListener("click", resetFunc)
+reset.addEventListener("click", resetFunc);
+playAgain.addEventListener("click", playAgainFunc);
+start.addEventListener("click", startTimer);
