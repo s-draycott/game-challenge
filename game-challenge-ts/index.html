@@ -26,7 +26,8 @@
 
     <!-- SCORE POP UP -->
     <div id = "score-pop-up" class="score">
-      <h1 class = "score__heading">S C O R E S</h1>
+      <div class = "score__container">
+        <h1 class="score__heading">S C O R E S</h1>
         <div>
           <p>Number of mistakes:</p>
         </div>
@@ -36,6 +37,18 @@
         <div>
           <p>Characters per minute:</p>
         </div>
+        <div>
+          <button id="play-again-btn" class="game__controls__button score__replay">Play Again</button>
+        </div>
+        <div class="score__averageTyping">
+          <h2>Average Typing Speeds:</h2>
+            <li>General: Around 40 WPM</li>
+            <li>Adults: Around 55 WPM</li>
+            <li>Children: Between 37 and 44 WPM</li>
+            <li>Professional typists: Around 60-90 WPM</li>
+            <li>Advanced typists: Over 120 WPM</li>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>

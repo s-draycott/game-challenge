@@ -33,8 +33,8 @@ loadPara();
 
 
 
-// Timer currently counts down from 60 to 0
-let timerLength = 2;
+// Timer will be set to 60 and score will display after
+let timerLength = 1;
 const timerFunc = () => {
     if (timerLength > 0) {
         timerLength--;
