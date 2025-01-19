@@ -1,6 +1,7 @@
 import '../stylesheet.scss';
 const timer = document.getElementById("timer");
-const paragraphText = document.getElementById("paragraphText");
+const paragraphText = document.getElementById("paragraph-text");
+const scoreDisplay = document.getElementById("score-pop-up");
 // POTENITAL PARAGRAPHS
 // What they do not comprehend is man’s helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great.
 // A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.
@@ -15,7 +16,7 @@ const paragraphs = [
     "What they do not comprehend is man’s helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great."
 ]
 
-if(!timer || !paragraphText) {
+if(!timer || !paragraphText || !scoreDisplay) {
     throw new Error("Some elements can not be found")
 }
 
@@ -28,16 +29,17 @@ const loadPara = () => {
     paragraphText.innerHTML = randomPara;
 }
 loadPara();
-console.log(paragraphs.length)
+
 
 
 
 // Timer currently counts down from 60 to 0
-let timerLength = 60;
+let timerLength = 2;
 const timerFunc = () => {
     if (timerLength > 0) {
         timerLength--;
         timer.innerHTML = " " + timerLength;
-    } // else display the score
+    } else scoreDisplay.style.display = "block";
 }; setInterval(timerFunc, 1000);
+
 
