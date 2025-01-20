@@ -23,17 +23,17 @@ Another potential add on will be to add levels but I think this is beyond my sco
 
 -   [x] The paragraph of text will display in its own box
 -   [x] Below that there will be the buttons/counters
--   [ ] Appropriate styling applied
+-   [x] Appropriate styling applied
     -   [x] Background design etc.
 
 ## Typescript Logic
 
 -   Paragraph:
-    -   [ ] Need to create something to input the paragraph of text. Maybe have 10 set paragraphs that it will cycle through each time the test is restarted
+    -   [x] Need to create something to input the paragraph of text. Maybe have 10 set paragraphs that it will cycle through each time the test is restarted
     -   [ ] Needs to recognise characters inputted and match them to the character in the displayed paragraph box
         -   [ ] If matched turn green
         -   [ ] If not matched then turn red AND add 1 count to error counter
--   [ ] Add timer function to timer button. Count down from 60 seconds once the Start button has been initated. When timer finishes then display score
+-   [x] Add timer function to timer button. Count down from 60 seconds once the Start button has been initated. When timer finishes then display score
 -   [ ] Start / restart funcitonality needs to be added
     -   [ ] Start - initiates timer
     -   [ ] Restart - resets timer and clears all attempted text
