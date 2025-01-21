@@ -10,16 +10,16 @@
     <div class = "game">
       <h1>R a p i d - T y p e</h1>
       <div class = "game__paragraphContainer">
-        <p id = "paragraph-text">Paragraph not loading</p>
+        <p id = "paragraph-text">Click Start to load to paragraph</p>
       </div>
       <div class = "game__controls">
         <button id="start" class="game__controls__button">Start</button>
         <button id="reset" class="game__controls__button">Restart</button>
-        <button class = "game__controls__button">Time Remaining:<span id = "timer" ></span>s</button>
-        <button id = "mistakes" class = "game__controls__button">Mistakes: <span id="mistakes">0</span></button>
+        <button class = "game__controls__button">Time Remaining:<span id = "timer" > 60</span>s</button>
+        <button class = "game__controls__button">Mistakes: <span id="mistakes" type = "number"></span></button>
       </div>
       <div class = "input">
-        <input class = "game__input" type = "text" placeholder = "Click here to start typing" />
+        <input class = "game__input" type = "text" placeholder = "Click here to start typing"/>
       </div>
     </div>
 
@@ -28,13 +28,13 @@
       <div class = "score__container">
         <h1 class="score__heading">- - - - - S C O R E S - - - - -</h1>
         <div>
-          <p>Number of mistakes:</p>
+          <p>Number of mistakes:<span id ="output-mistakes"></span></p>
         </div>
         <div>
-          <p>Words per minute:</p>
+          <p>Words per minute:<span id = "output-wpm"></span></p>
         </div>
         <div>
-          <p>Characters per minute:</p>
+          <p>Characters per minute:<span id="output-cpm"></span></p>
         </div>
         <div>
           <button id="play-again-btn" class="game__controls__button score__replay playAgain">Play Again</button>
