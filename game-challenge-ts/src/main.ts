@@ -16,7 +16,7 @@ const paragraphs = [
     "A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.",
     "They picked a way among the trees, and their ponies plodded along, carefully avoiding the many writhing and interlacing roots. There was no undergrowth. The ground was rising steadily, and as they went forward it seemed that the trees became taller, darker, and thicker. There was no sound, except an occasional drip of moisture falling through the still leaves. For the moment there was no whispering or movement among the branches; but they all got an uncomfortable feeling that they were being watched with disapproval, deepening to dislike and even enmity. The feeling steadily grew, until they found themselves looking up quickly, or glancing back over their shoulders, as if they expected a sudden blow.",
     "There, peeping among the cloud-wrack above a dark tor high up in the mountains, Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him. For like a shaft, clear and cold, the thought pierced him that in the end the Shadow was only a small and passing thing: there was light and high beauty for ever beyond its reach.",
-    "What they do not comprehend is man’s helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great."
+    "What they do not comprehend is mans helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great."
 ]
 
 if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start || !inputText || !mistakeCounter || !mistakeOutput || !outputCharPerMin || !outputWordPerMin) {
@@ -43,47 +43,41 @@ loadPara();
 inputText.disabled = true;
 let countMistakes = 0;
 let charCounter = 0;
+let charactersChecked = 0; // need this variable to let the character checked increment
 const checkInput = () => {
     const paragraphArray = paragraphText.querySelectorAll("span"); //gets all created spans in paragraph text
     const inputCharacterArray = inputText.value.split(""); //turns input charcters into character array
     let completedGame = true; //setting up boolean for if game is done
-    paragraphArray.forEach((paragraphChar, index) => {
-        const inputCharacter = inputCharacterArray[index];
-        console.log(inputCharacter);
+    for (let i = charactersChecked; i < paragraphArray.length; i++) {
+        const inputCharacter = inputCharacterArray[i];
         if (inputCharacter == null) { //keeps text at default before any input it typed
-            paragraphChar.classList.remove('correct');
-            paragraphChar.classList.remove('incorrect');
+            paragraphArray[i].classList.remove('correct');
+            paragraphArray[i].classList.remove('incorrect');
             completedGame = false;
         } // if input character matches the paragraph character that is in the inner html then apply classes need to remove other class to avoid classes building up and being correct and incorrect
-        else if (inputCharacter === paragraphChar.innerHTML) {
-            paragraphChar.classList.add('correct');
-            paragraphChar.classList.remove('incorrect');
+        else if (inputCharacter === paragraphArray[i].innerHTML) {
+            paragraphArray[i].classList.add('correct');
+            paragraphArray[i].classList.remove('incorrect');
             charCounter+=1;
+            charactersChecked+=1;
             completedGame = true;
-            const charPerMin = (Math.floor(Math.sqrt(charCounter*2)));
-            // console.log(charPerMin);
-            const wordsPerMin = (Math.round(charPerMin/5));
-            outputCharPerMin.innerHTML = ` ${charPerMin}`
+            const wordsPerMin = (Math.round(charCounter/5));
+            outputCharPerMin.innerHTML = ` ${charCounter}`
             outputWordPerMin.innerHTML = ` ${wordsPerMin}`
-        } else if (inputCharacter !== paragraphChar.innerHTML) {
-            console.log("input character", inputCharacter);
-            console.log("paragraph character", paragraphChar.innerHTML);
-            paragraphChar.classList.remove('correct');
-            paragraphChar.classList.add('incorrect');
+        } else {
+            paragraphArray[i].classList.remove('correct');
+            paragraphArray[i].classList.add('incorrect');
             completedGame = false;
             countMistakes+=1;
-            console.log(countMistakes);
-            const numberOfMistakes = (Math.floor(Math.sqrt(countMistakes*2)));//i noticed this was prodicing triangular numbers, I wasn't sure how to get around this so i just reversed the equation to get it to count up by 1. Will try and fix later if I have time
-            mistakeCounter.innerText = `${numberOfMistakes}`; 
-            mistakeOutput.innerHTML = ` ${numberOfMistakes}`;
+            charactersChecked+=1;
+            mistakeCounter.innerText = `${countMistakes}`; 
+            mistakeOutput.innerHTML = ` ${countMistakes}`;
         }
-    })
+    }
     if (completedGame) {
         scoreDisplay.style.display = "block"
     }
 };
-
-
 
 
 const no_backspaces = (event: any) =>{
@@ -92,10 +86,10 @@ const no_backspaces = (event: any) =>{
     }
 }
 
-inputText.addEventListener("keydown", no_backspaces)
+// inputText.addEventListener("keydown", no_backspaces)
 //BUTTONS--------------------------------------------
 //start button
-let timerLength = 300;
+let timerLength = 60;
 timer.innerHTML = " " + timerLength;
 
 const timerFunc = () => {
