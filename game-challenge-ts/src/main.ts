@@ -40,7 +40,7 @@ loadPara();
 // FUNCTION TO CHECK CHARACTER INPUT
 // let timers, maxTime = 60, timerLeft = maxTime, charIndex = errors = isTyping = 0;
 
-
+inputText.disabled = true;
 let countMistakes = 0;
 let charCounter = 0;
 const checkInput = () => {
@@ -49,36 +49,42 @@ const checkInput = () => {
     let completedGame = true; //setting up boolean for if game is done
     paragraphArray.forEach((paragraphChar, index) => {
         const inputCharacter = inputCharacterArray[index];
-        //keeps text at default before any input it typed
-        if (inputCharacter == null) {
+        console.log(inputCharacter);
+        if (inputCharacter == null) { //keeps text at default before any input it typed
             paragraphChar.classList.remove('correct');
             paragraphChar.classList.remove('incorrect');
             completedGame = false;
-            // mistakeCounter.innerText = "0";
-        } // if input character matches the paragraph character that in in the inner html then apply classes need to remove other class to avoid classes building up and being correct and incorrect
+        } // if input character matches the paragraph character that is in the inner html then apply classes need to remove other class to avoid classes building up and being correct and incorrect
         else if (inputCharacter === paragraphChar.innerHTML) {
             paragraphChar.classList.add('correct');
             paragraphChar.classList.remove('incorrect');
-            charCounter++;
+            charCounter+=1;
             completedGame = true;
             const charPerMin = (Math.floor(Math.sqrt(charCounter*2)));
+            // console.log(charPerMin);
             const wordsPerMin = (Math.round(charPerMin/5));
             outputCharPerMin.innerHTML = ` ${charPerMin}`
             outputWordPerMin.innerHTML = ` ${wordsPerMin}`
-        } else {
+        } else if (inputCharacter !== paragraphChar.innerHTML) {
+            console.log("input character", inputCharacter);
+            console.log("paragraph character", paragraphChar.innerHTML);
             paragraphChar.classList.remove('correct');
             paragraphChar.classList.add('incorrect');
             completedGame = false;
-            countMistakes++;
+            countMistakes+=1;
+            console.log(countMistakes);
             const numberOfMistakes = (Math.floor(Math.sqrt(countMistakes*2)));//i noticed this was prodicing triangular numbers, I wasn't sure how to get around this so i just reversed the equation to get it to count up by 1. Will try and fix later if I have time
             mistakeCounter.innerText = `${numberOfMistakes}`; 
-            mistakeOutput.innerHTML = ` ${numberOfMistakes}`; 
+            mistakeOutput.innerHTML = ` ${numberOfMistakes}`;
         }
     })
     if (completedGame) {
         scoreDisplay.style.display = "block"
     }
 };
+
+
+
 
 const no_backspaces = (event: any) =>{
     if (event.keyCode == 8) {
@@ -89,13 +95,15 @@ const no_backspaces = (event: any) =>{
 inputText.addEventListener("keydown", no_backspaces)
 //BUTTONS--------------------------------------------
 //start button
-let timerLength = 60;
+let timerLength = 300;
 timer.innerHTML = " " + timerLength;
 
 const timerFunc = () => {
     if (timerLength > 0) {
         timerLength--;
         timer.innerHTML = " " + timerLength;
+        inputText.disabled = false;
+        inputText.focus();
     } else {
         scoreDisplay.style.display = "block";
         let timerLength = 60
@@ -135,6 +143,6 @@ start.addEventListener("click", () => {
     setInterval(timerFunc, 1000)});
 inputText.addEventListener("input", checkInput)
 // inputText.addEventListener("input", startTimer)
-start.addEventListener("click", () => inputText.focus()); //activates input box upon click
+
 
 
