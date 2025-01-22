@@ -79,14 +79,6 @@ const checkInput = () => {
     }
 };
 
-
-const no_backspaces = (event: any) =>{
-    if (event.keyCode == 8) {
-        event.preventDefault();
-    }
-}
-
-// inputText.addEventListener("keydown", no_backspaces)
 //BUTTONS--------------------------------------------
 //start button
 let timerLength = 60;
