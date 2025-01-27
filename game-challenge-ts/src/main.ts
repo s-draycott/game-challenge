@@ -16,7 +16,7 @@ const paragraphs = [
     "A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.",
     "They picked a way among the trees, and their ponies plodded along, carefully avoiding the many writhing and interlacing roots. There was no undergrowth. The ground was rising steadily, and as they went forward it seemed that the trees became taller, darker, and thicker. There was no sound, except an occasional drip of moisture falling through the still leaves. For the moment there was no whispering or movement among the branches; but they all got an uncomfortable feeling that they were being watched with disapproval, deepening to dislike and even enmity. The feeling steadily grew, until they found themselves looking up quickly, or glancing back over their shoulders, as if they expected a sudden blow.",
     "There, peeping among the cloud-wrack above a dark tor high up in the mountains, Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him. For like a shaft, clear and cold, the thought pierced him that in the end the Shadow was only a small and passing thing: there was light and high beauty for ever beyond its reach.",
-    "What they do not comprehend is mans helplessness. I am weak, small, and of no consequence to the universe.  It does not notice me; I live on unseen.  But why is that bad?  Isn’t it better that way?  Whom the gods notice they destroy.  But small...and you will escape the jealousy of the great."
+    "What they do not comprehend is mans helplessness. I am weak, small, and of no consequence to the universe. It does not notice me; I live on unseen. But why is that bad? Is it not better that way? Whom the gods notice they destroy. But small...and you will escape the jealousy of the great."
 ]
 
 if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start || !inputText || !mistakeCounter || !mistakeOutput || !outputCharPerMin || !outputWordPerMin) {
@@ -38,7 +38,6 @@ const loadPara = () => {
 loadPara();
 
 // FUNCTION TO CHECK CHARACTER INPUT
-// let timers, maxTime = 60, timerLeft = maxTime, charIndex = errors = isTyping = 0;
 
 inputText.disabled = true;
 let countMistakes = 0;
@@ -80,55 +79,56 @@ const checkInput = () => {
 };
 
 //BUTTONS--------------------------------------------
-//start button
-let timerLength = 60;
-timer.innerHTML = " " + timerLength;
+let timerLength = 5;
 
 const timerFunc = () => {
     if (timerLength > 0) {
         timerLength--;
         timer.innerHTML = " " + timerLength;
+        scoreDisplay.style.display = "none"
         inputText.disabled = false;
         inputText.focus();
-    } else {
+    } else if (timerLength === 0) {
         scoreDisplay.style.display = "block";
-        let timerLength = 60
         timer.innerHTML = " " + timerLength;
         inputText.disabled = true;
     } 
-
 }; 
 
 const resetFunc = () => {
-    loadPara();
-    scoreDisplay.style.display = "none";
-    let timerLength = 60;
-    const startTimer = () => {
-    if (timerLength === 0) {
-        timerLength--;
-        timer.innerHTML = " " + timerLength;
-        setInterval(startTimer ,1000);
-    } 
-}};
+    charactersChecked = 0;
+    countMistakes = 0;
+    charCounter = 0;
+    mistakeOutput.innerHTML = "";
+    outputWordPerMin.innerHTML = " ";
+    outputCharPerMin.innerHTML = " ";
+    mistakeCounter.innerHTML= "0";
+    scoreDisplay.style.display = "none"; //gets rid of score display
+    inputText.value = ""; //clears any text in the box
+    timerLength = 60;
+
+};
 
 // play again
-// const playAgainFunc = () =>{
-//     let timerLength = 60;
-//     loadPara(); //reloads fresh paragraph
-//     mistakeCounter.innerHTML= "0";
-//     scoreDisplay.style.display = "none"; //gets rid of score display
-//     inputText.value = ""; //clears any text in the box
-//     inputText.disabled = true;   
-// }
+const playAgainFunc = () =>{
+    loadPara(); //reloads fresh paragraph
+    charactersChecked = 0;
+    countMistakes = 0;
+    charCounter = 0;
+    mistakeOutput.innerHTML = "";
+    outputWordPerMin.innerHTML = " ";
+    outputCharPerMin.innerHTML = " ";
+    mistakeCounter.innerHTML= "0";
+    scoreDisplay.style.display = "none"; //gets rid of score display
+    inputText.value = ""; //clears any text in the box
+    timerLength = 60;
+}
 
 
 
-reset.addEventListener("click", resetFunc);
-// playAgain.addEventListener("click", () => setInterval(playAgainFunc, 1000));
-start.addEventListener("click", () => {
-    setInterval(timerFunc, 1000)});
+
+start.addEventListener("click", () => {setInterval(timerFunc, 1000)});
+playAgain.addEventListener("click", playAgainFunc)
 inputText.addEventListener("input", checkInput)
-// inputText.addEventListener("input", startTimer)
-
-
+reset.addEventListener("click", resetFunc);
 
