@@ -28,7 +28,7 @@ if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start ||
 // ---------------------------
 // FUNCTION TO LOAD PARAGRAPHS
 // ---------------------------
-startAudio.play();
+
 const loadPara = () => {
     let randomParaIndex: number = Math.floor(Math.random() * paragraphs.length); //math.random creates random decimals between 0 and 1 (inclusive of 0). Multiply by array length to get values within the range of the array and then math.floor to get whole numbers between 0 and array length to produce an array index value
     let randomPara: string = paragraphs[randomParaIndex]; //picks out whichever random index has been chosen from the paragraphs array
@@ -150,6 +150,10 @@ const playSound2 = () => {
     keyPress.play();
 }
 
+const playSound3= () => {
+    startAudio.play();
+}
+
 // ---------------------------
 // EVENT LISTENERS
 // ---------------------------
@@ -166,4 +170,6 @@ reset.addEventListener("click", playSound);
 
 inputText.addEventListener("input", checkInput);
 inputText.addEventListener("keypress", playSound2);
+
+window.addEventListener("load", playSound3)
 
