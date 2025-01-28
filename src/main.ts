@@ -23,12 +23,12 @@ if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start ||
     throw new Error("Some elements can not be found")
 };
 
-startAudio.play();
+
 
 // ---------------------------
 // FUNCTION TO LOAD PARAGRAPHS
 // ---------------------------
-
+startAudio.play();
 const loadPara = () => {
     let randomParaIndex: number = Math.floor(Math.random() * paragraphs.length); //math.random creates random decimals between 0 and 1 (inclusive of 0). Multiply by array length to get values within the range of the array and then math.floor to get whole numbers between 0 and array length to produce an array index value
     let randomPara: string = paragraphs[randomParaIndex]; //picks out whichever random index has been chosen from the paragraphs array
@@ -89,7 +89,7 @@ const checkInput = () => {
 //TIMERS AND BUTTONS
 // ---------------------------
 
-let timerLength: number = 5;
+let timerLength: number = 60;
 
 const timerFunc = () => {
     if (timerLength > 0) {
