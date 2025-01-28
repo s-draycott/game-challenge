@@ -1,5 +1,5 @@
 import './stylesheet.css';
-import { buttonClick, keyPress, gameOverSound, startAudio } from './sounds';
+import { buttonClick, keyPress, gameOverSound } from './sounds';
 
 const timer = document.querySelector("#timer");
 const paragraphText = document.querySelector("#paragraphText");
@@ -14,20 +14,20 @@ const outputCharPerMin = document.querySelector<HTMLSpanElement>("#outputCpm");
 const outputWordPerMin = document.querySelector<HTMLSpanElement>("#outputWpm");
 const paragraphs: string[] = [
     "A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.",
-    "They picked a way among the trees, and their ponies plodded along, carefully avoiding the many writhing and interlacing roots. There was no undergrowth. The ground was rising steadily, and as they went forward it seemed that the trees became taller, darker, and thicker. There was no sound, except an occasional drip of moisture falling through the still leaves. For the moment there was no whispering or movement among the branches; but they all got an uncomfortable feeling that they were being watched with disapproval, deepening to dislike and even enmity. The feeling steadily grew, until they found themselves looking up quickly, or glancing back over their shoulders, as if they expected a sudden blow.",
     "There, peeping among the cloud-wrack above a dark tor high up in the mountains, Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him. For like a shaft, clear and cold, the thought pierced him that in the end the Shadow was only a small and passing thing: there was light and high beauty for ever beyond its reach.",
-    "What they do not comprehend is mans helplessness. I am weak, small, and of no consequence to the universe. It does not notice me; I live on unseen. But why is that bad? Is it not better that way? Whom the gods notice they destroy. But small...and you will escape the jealousy of the great."
+    "What they do not comprehend is mans helplessness. I am weak, small, and of no consequence to the universe. It does not notice me; I live on unseen. But why is that bad? Is it not better that way? Whom the gods notice they destroy. But small...and you will escape the jealousy of the great.",
+    "I must not fear. Fear is the mind-killer. Fear is the little-death that brings total obliteration. I will face my fear. I will permit it to pass over me and through me. And when it has gone past I will turn the inner eye to see its path. Where the fear has gone there will be nothing. Only I will remain.",
+    "I have neither the time nor the inclination to explain myself to a man who rises and sleeps under the blanket of the very freedom that I provide, and then questions the manner in which I provide it. I would rather you just said thank you, and went on your way, otherwise, I suggest you pick up a weapon, and stand a post. Either way, I don't give a damn what you think you are entitled to.",
+    "I see in your eyes the same fear that would take the heart of me. A day may come when the courage of men fails, when we forsake our friends and break all bonds of fellowship, but it is not this day. An hour of wolves and shattered shields, when the age of men comes crashing down, but it is not this day! This day we fight! By all that you hold dear on this good Earth, I bid you  stand, Men of the West!",
+    "We don\’t read and write poetry because it\’s cute. We read and write poetry because we are members of the human race And the human race is filled with passion. And medicine, law, business, engineering, these are noble pursuits and necessary to sustain life. But poetry, beauty, romance, love, these are what we stay alive for.",
+
+
 ];
 
 if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start || !inputText || !mistakeCounter || !mistakeOutput || !outputCharPerMin || !outputWordPerMin) {
     throw new Error("Some elements can not be found")
 };
 
-window.onload = () => {
-    startAudio.muted = false;
-    alert('Click to unmute audio');
-    document.body.addEventListener("click", () => startAudio.play());
-}
 
 // ---------------------------
 // FUNCTION TO LOAD PARAGRAPHS
