@@ -11,7 +11,6 @@ const mistakeCounter = document.querySelector<HTMLSpanElement>('#mistakes');
 const mistakeOutput = document.querySelector<HTMLSpanElement>("#output-mistakes")
 const outputCharPerMin = document.querySelector<HTMLSpanElement>("#output-cpm")
 const outputWordPerMin = document.querySelector<HTMLSpanElement>("#output-wpm")
-
 const paragraphs = [
     "A long time ago in a galaxy far, far away... Rebel spaceships, battered and few, are manoeuvring a desperate last stand against the mighty Imperial Starfleet. An ancient weapon, the Death Star, capable of destroying a planet, is now fully operational and under construction. The fate of the rebellion lies with a small band of brave fighters who have only one chance to strike from the shadows.",
     "They picked a way among the trees, and their ponies plodded along, carefully avoiding the many writhing and interlacing roots. There was no undergrowth. The ground was rising steadily, and as they went forward it seemed that the trees became taller, darker, and thicker. There was no sound, except an occasional drip of moisture falling through the still leaves. For the moment there was no whispering or movement among the branches; but they all got an uncomfortable feeling that they were being watched with disapproval, deepening to dislike and even enmity. The feeling steadily grew, until they found themselves looking up quickly, or glancing back over their shoulders, as if they expected a sudden blow.",
@@ -23,7 +22,7 @@ if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start ||
     throw new Error("Some elements can not be found")
 }
 
-// Function to load paragraph onto screen
+// FUNCTION TO LOAD PARAGRAPHS ----------------------
 const loadPara = () => {
     let randomParaIndex = Math.floor(Math.random() * paragraphs.length); //math.random creates random decimals between 0 and 1 (inclusive of 0). Multiply by array length to get values within the range of the array and then math.floor to get whole numbers between 0 and array length to produce an array index value
     let randomPara = paragraphs[randomParaIndex]; //picks out whichever random index has been chosen from the paragraphs array
@@ -37,12 +36,14 @@ const loadPara = () => {
 } 
 loadPara();
 
-// FUNCTION TO CHECK CHARACTER INPUT
+// FUNCTION TO CHECK CHARACTER INPUT---------------------
 
 inputText.disabled = true;
+
 let countMistakes = 0;
 let charCounter = 0;
-let charactersChecked = 0; // need this variable to let the character checked increment
+let charactersChecked = 0;
+
 const checkInput = () => {
     const paragraphArray = paragraphText.querySelectorAll("span"); //gets all created spans in paragraph text
     const inputCharacterArray = inputText.value.split(""); //turns input charcters into character array
@@ -78,7 +79,8 @@ const checkInput = () => {
     }
 };
 
-//BUTTONS--------------------------------------------
+//TIMERS AND BUTTONS--------------------------------------------
+
 let timerLength = 5;
 
 const timerFunc = () => {
@@ -103,15 +105,13 @@ const resetFunc = () => {
     outputWordPerMin.innerHTML = " ";
     outputCharPerMin.innerHTML = " ";
     mistakeCounter.innerHTML= "0";
-    scoreDisplay.style.display = "none"; //gets rid of score display
-    inputText.value = ""; //clears any text in the box
+    scoreDisplay.style.display = "none"; 
+    inputText.value = ""; 
     timerLength = 60;
-
 };
 
-// play again
 const playAgainFunc = () =>{
-    loadPara(); //reloads fresh paragraph
+    loadPara(); 
     charactersChecked = 0;
     countMistakes = 0;
     charCounter = 0;
@@ -119,14 +119,12 @@ const playAgainFunc = () =>{
     outputWordPerMin.innerHTML = " ";
     outputCharPerMin.innerHTML = " ";
     mistakeCounter.innerHTML= "0";
-    scoreDisplay.style.display = "none"; //gets rid of score display
-    inputText.value = ""; //clears any text in the box
+    scoreDisplay.style.display = "none"; 
+    inputText.value = ""; 
     timerLength = 60;
 }
 
-
-
-
+// EVENT LISTENERS ----------------------------------------
 start.addEventListener("click", () => {setInterval(timerFunc, 1000)});
 playAgain.addEventListener("click", playAgainFunc)
 inputText.addEventListener("input", checkInput)
