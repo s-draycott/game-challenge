@@ -30,7 +30,7 @@ h1 {
     color:rgb(186, 161, 232);
     font-size: 200%;
     font-weight:lighter;
-    margin: 20px auto 10px auto;
+    margin: 0px auto 0px auto;
 }
 
 h2 {
@@ -65,7 +65,7 @@ h2 {
 span {
     font-size: 8pt;
     @media only screen and (min-width: ($mobile + 1px)) {
-        font-size: 5vh;
+        font-size: 3.5vh;
     }
 }
 
