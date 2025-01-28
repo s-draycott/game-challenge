@@ -50,7 +50,7 @@ h2 {
 }
 @media only screen and (min-width: 676px) {
   #timer {
-    font-size: 5vh;
+    font-size: 4vh;
   }
 }
 
@@ -59,7 +59,7 @@ h2 {
 }
 @media only screen and (min-width: 676px) {
   #mistakes {
-    font-size: 5vh;
+    font-size: 4vh;
   }
 }
 
@@ -113,7 +113,7 @@ span {
 }
 @media only screen and (min-width: 676px) {
   .game__controls__button {
-    font-size: 5vh;
+    font-size: 4vh;
   }
 }
 .game__controls__button__timer {

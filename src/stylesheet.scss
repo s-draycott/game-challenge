@@ -50,7 +50,7 @@ h2 {
 #timer {
     font-size: 8pt;
     @media only screen and (min-width: ($mobile + 1px)) {
-        font-size: 5vh;
+        font-size: 4vh;
     }
 }
 
@@ -58,7 +58,7 @@ h2 {
     font-size: 8pt;
 
     @media only screen and (min-width: ($mobile + 1px)) {
-        font-size: 5vh;
+        font-size: 4vh;
     }
 }
 
@@ -108,7 +108,7 @@ span {
             font-size: 8pt;
             
             @media only screen and (min-width: ($mobile + 1px)) {
-                font-size: 5vh;
+                font-size: 4vh;
             }
 
             &__timer {
