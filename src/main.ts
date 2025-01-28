@@ -23,7 +23,11 @@ if(!timer || !paragraphText || !scoreDisplay|| !reset || !playAgain || !start ||
     throw new Error("Some elements can not be found")
 };
 
-
+window.onload = () => {
+    startAudio.muted = false;
+    alert('Click to unmute audio');
+    document.body.addEventListener("click", () => startAudio.play());
+}
 
 // ---------------------------
 // FUNCTION TO LOAD PARAGRAPHS
@@ -150,9 +154,6 @@ const playSound2 = () => {
     keyPress.play();
 }
 
-const playSound3= () => {
-    startAudio.play();
-}
 
 // ---------------------------
 // EVENT LISTENERS
@@ -171,5 +172,5 @@ reset.addEventListener("click", playSound);
 inputText.addEventListener("input", checkInput);
 inputText.addEventListener("keypress", playSound2);
 
-window.addEventListener("onload", playSound3)
+
 
