@@ -1,4 +1,4 @@
-import '../stylesheet.scss';
+import './stylesheet.css';
 
 const timer = document.querySelector("#timer");
 const paragraphText = document.querySelector("#paragraph-text");
