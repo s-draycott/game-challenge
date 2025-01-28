@@ -171,5 +171,5 @@ reset.addEventListener("click", playSound);
 inputText.addEventListener("input", checkInput);
 inputText.addEventListener("keypress", playSound2);
 
-window.addEventListener("load", playSound3)
+window.addEventListener("onload", playSound3)
 
